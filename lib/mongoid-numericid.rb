@@ -29,8 +29,8 @@ module Mongoid
 
 		module ClassMethods
 			def with_numeric_id(id)
-				return any_in(:_numeric_id => id) if id.kind_of?(Array)
-				return where(:_numeric_id => id).first
+				return unscoped.any_in(:_numeric_id => id) if id.kind_of?(Array)
+				return unscoped.where(:_numeric_id => id).first
 			end
 
 			def find(*args)
