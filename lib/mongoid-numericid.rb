@@ -13,10 +13,10 @@ module Mongoid
 
 		module InstanceMethods
 			def generate_new_id
-				new_id = (self.class.last.try(:_numeric_id) || 0) + 1
+				new_id = (self.class.unscoped.last.try(:_numeric_id) || 0) + 1
 				
 				while !self.class.with_numeric_id(new_id).nil?
-					new_id = (self.class.last.try(:_numeric_id) || 0) + 1
+					new_id = (self.class.unscoped.last.try(:_numeric_id) || 0) + 1
 				end
 				
 				self._numeric_id = new_id
