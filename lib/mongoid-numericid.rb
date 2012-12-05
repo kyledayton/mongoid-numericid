@@ -32,6 +32,12 @@ module Mongoid
 				return any_in(:_numeric_id => id) if id.kind_of?(Array)
 				return where(:_numeric_id => id).first
 			end
+
+			def find(*args)
+				rec = self.with_numeric_id(*args[0])
+				return rec if rec
+				super
+			end
 		end # ClassMethods
 
 	end # NumericID

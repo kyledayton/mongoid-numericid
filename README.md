@@ -30,10 +30,7 @@ end
 To use:
 
 ```ruby
-p = Post.create
-p2 = Post.with_numeric_id p.numeric_id
-
-p == p2 # => true
+my_post = Post.find(1) # or Post.with_numeric_id(1)
 ```
 
 ## Contributing
